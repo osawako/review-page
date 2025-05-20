@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>口コミ投稿のお願い</title>
+  <style>
+    body { text-align: center; font-family: sans-serif; padding: 40px; }
+    button { font-size: 1.2em; padding: 10px 20px; margin-top: 20px; }
+  </style>
+  <script>
+    window.onload = function () {
+      const params = new URLSearchParams(window.location.search);
+      const stars = params.get("stars") || "★5";
+      const comment = params.get("comment") || "";
+      const text = stars + "\n" + comment;
+      navigator.clipboard.writeText(text).then(() => {
+        document.getElementById("message").textContent = "内容をコピーしました！";
+      });
+      document.getElementById("link").href = "https://search.google.com/local/writereview?placeid=ChIJs6fDgp77x04RAXbd27Fw44M";
+    }
+  </script>
+</head>
+<body>
+  <h2>ご協力ありがとうございます！</h2>
+  <p id="message">コピー中...</p>
+  <p>下のボタンを押すと、Googleの口コミ投稿ページが開きます。</p>
+  <a id="link" target="_blank"><button>投稿する</button></a>
+</body>
+</html>
